@@ -29,8 +29,6 @@ let cursorActiveValue; // cursor value (bool)
 
 generateButton.addEventListener("click", generate);
 
-
-
 // Set form result in variables
 function generate() {
     textList = textToGenerate.value.split('');
@@ -43,6 +41,12 @@ function generate() {
         cursorActiveValue = false;
     }
 
+    // push all elements in html and css results
+    pushAll();
+
+}
+
+function pushAll(){
     // reset results
     resetResultHtml();
     resetResultCss();
@@ -53,12 +57,13 @@ function generate() {
     // add keyframes anim-letter
     pushResultCss(newKeyframesLetter(fontSizeValue, fontSizeTypeValue));
 
-    // add #cursor style
-    pushResultCss(newCursor(fontSizeValue, fontSizeTypeValue));
-    // add keyframes anim-cursor
-    pushResultCss(keyframesCursor);
-
-    return "Done";
+    if (cursorActiveValue) {
+        // add #cursor style
+        pushResultCss(newCursor(fontSizeValue, fontSizeTypeValue));
+        // add keyframes anim-cursor
+        pushResultCss(keyframesCursor);
+    }
+    
 }
 
 
