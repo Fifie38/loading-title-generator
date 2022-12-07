@@ -15,6 +15,8 @@ const resultCss = document.getElementById("result-css");
 let letter = ".letter {font-size: 0; animation: 0.1s linear anim-letter; animation-fill-mode: forwards;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 
+const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
+
 
 // Variables
 let textList; // a list of all characteres
@@ -53,6 +55,9 @@ function generate() {
 
     // add #cursor style
     pushResultCss(newCursor(fontSizeValue, fontSizeTypeValue));
+    // add keyframes anim-cursor
+    pushResultCss(keyframesCursor);
+
     return "Done";
 }
 
