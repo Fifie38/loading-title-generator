@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Loading title generator</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <header>
+        <h1>Welcome into the "Loading title generator" !</h1>
+        <h2>You can now generate this :</h2>
+        <h1>
+            <span class="letter">H</span>
+            <span class="letter">e</span>
+            <span class="letter">l</span>
+            <span class="letter">l</span>
+            <span class="letter">o </span>
+            <span class="letter"> W</span>
+            <span class="letter">o</span>
+            <span class="letter">r</span>
+            <span class="letter">l</span>
+            <span class="letter">d </span>
+            <span class="letter">!</span>
+
+            <span id="l-cursor">|</span>
+        </h1>
+    </header>
+
+    <section id="generator-box">
+        <div id="generator-left">
+            <h2>Generator :</h2>
+            <form action="">
+                <label for="text-to-generate">Your text :</label> <br>
+                <input type="text" id="text-to-generate" name="text-to-generate"> <br>
+                <br>
+                <label for="font-size">Font size :</label> <br>
+                <input type="number" id="font-size" name="font-size">
+                <select name="font-size-type" id="font-size-type">
+                    <option value="em">em</option>
+                    <option value="rem">rem</option>
+                    <option value="px">px</option>
+                    <option value="cm">cm</option>
+                </select>
+                <br>
+                <br>
+                <label for="delay-number">Delay between each character : (s) </label> <br>
+                <input type="number" id="delay-number" name="delay-number">
+                <br>
+                <br>
+                <label for="cursor-active">Cursor at the end :</label> <br>
+                <select id="cursor-active" name="cursor-active">
+                    <option value="yes">yes</option>
+                    <option value="no">no</option>
+                </select>
+                <br>
+                <br>
+                <input type="button" value="Generate" id="generate-button">
+            </form>
+        </div>
+
+        <div id="generator-right">
+            <div id="result-html">
+                
+            </div>
+            <div id="result-css">
+
+            </div>
+        </div>
+    </section>
+
+
+    <script src="./app.js"></script>
+</body>
+
+</html>
