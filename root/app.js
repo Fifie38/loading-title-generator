@@ -17,6 +17,8 @@ let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size
 
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
 
+let startDelay = 1.5;
+
 
 // Variables
 let textList; // a list of all characteres
@@ -43,6 +45,8 @@ function generate() {
 
     // push all elements in html and css results
     pushAll();
+    console.log(newLetterNthChild(2));
+
 
 }
 
@@ -94,3 +98,10 @@ function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue =
 function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue){
     return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 0.8s infinite anim-cursor;}"
 }
+
+
+function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue = delayNumberValue){
+    return ".letter:nth-child(" + _number + "){animation-delay: " + String(_startDelay + (_number - 1)* _delayNumberValue) + "s;}"
+}
+
+console.log(newLetterNthChild(1));
