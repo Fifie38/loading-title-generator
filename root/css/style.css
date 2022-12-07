@@ -5,7 +5,6 @@
 
 * {
     font-family: "WorkSans-Light";
-    color: black;
 }
 
 body {
@@ -109,4 +108,19 @@ header * {
     padding: 25px;
     border-right: solid 1px black;
 }
+
+#generator-right {
+    border-right: none;
+}
+
+#generator-right h3 {
+    margin: 0;
+}
+
+#result-html, #result-css {
+    background-color: rgb(56, 56, 56);
+    color: aliceblue;
+    padding: 10px;
+}
+
 
