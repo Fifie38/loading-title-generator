@@ -11,14 +11,15 @@ const generatorRight = document.getElementById("generator-right");
 const resultHtml = document.getElementById("result-html");
 const resultCss = document.getElementById("result-css");
 
-// Constants
-let letter = ".letter {font-size: 0; animation: 0.1s linear anim-letter; animation-fill-mode: forwards;}"
+// Variables in start
+let letter = ".letter {font-size: 0; animation: 0.1s linear anim-letter; animation-fill-mode: forwards;}";
+let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 
 
 // Variables
 let textList; // a list of all characteres
-let fontSizeValue; // size value (int)
-let fontSizeTypeValue; // size type (em,rem, px, cm)
+let fontSizeValue = 0; // size value (int)
+let fontSizeTypeValue = "em"; // size type (em,rem, px, cm)
 let delayNumberValue; // delay value (float / int)
 let cursorActiveValue; // cursor value (bool)
 
@@ -44,8 +45,14 @@ function generate() {
     resetResultHtml();
     resetResultCss();
 
-    // add .letter class
-    pushResultCss(newLetter());
+    // add .letter style
+    pushResultCss(letter);
+
+    // add keyframes anim-letter
+    pushResultCss(newKeyframesLetter(fontSizeValue, fontSizeTypeValue));
+
+    // add #cursor style
+    pushResultCss(newCursor(fontSizeValue, fontSizeTypeValue));
     return "Done";
 }
 
@@ -70,9 +77,10 @@ function pushResultCss(text){
     resultCss.appendChild(newP);
 }
 
-function newLetter(_fontSizeValue=fontSizeValue) {
-    letter = ".letter {font-size: "+ _fontSizeValue +"; animation: 0.1s linear anim-letter; animation-fill-mode: forwards;}"
-    return letter;
+function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue) {
+    return "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: "+ _fontSizeValue + _fontSizeTypeValue +";}}"; 
 }
 
-pushResultCss(letter);
+function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue){
+    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 0.8s infinite anim-cursor;}"
+}
