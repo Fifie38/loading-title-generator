@@ -20,8 +20,8 @@ const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0
 
 // Variables
 let textList; // a list of all characteres
-let fontSizeValue = 0; // size value (int)
-let fontSizeTypeValue = "em"; // size type (em,rem, px, cm)
+let fontSizeValue; // size value (int)
+let fontSizeTypeValue; // size type (em,rem, px, cm)
 let delayNumberValue; // delay value (float / int)
 let cursorActiveValue; // cursor value (bool)
 
