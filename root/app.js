@@ -21,7 +21,7 @@ let startDelay = 1.5;
 
 
 // Variables
-let textList; // a list of all characteres
+let textList = []; // a list of all characteres
 let fontSizeValue; // size value (int)
 let fontSizeTypeValue; // size type (em,rem, px, cm)
 let delayNumberValue; // delay value (float / int)
@@ -45,7 +45,7 @@ function generate() {
 
     // push all elements in html and css results
     pushAll();
-    console.log(newLetterNthChild(2));
+
 
 
 }
@@ -55,12 +55,16 @@ function pushAll(){
     resetResultHtml();
     resetResultCss();
 
+    // ==== HTML ====//
+
+
+    // ==== CSS ====//
     // add .letter style
     pushResultCss(letter);
-
     // add keyframes anim-letter
     pushResultCss(newKeyframesLetter(fontSizeValue, fontSizeTypeValue));
-
+    // add all .letter:nth-child
+    pushAllLetterNthChild(textList.length);
     if (cursorActiveValue) {
         // add #cursor style
         pushResultCss(newCursor(fontSizeValue, fontSizeTypeValue));
@@ -101,7 +105,22 @@ function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSize
 
 
 function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue = delayNumberValue){
-    return ".letter:nth-child(" + _number + "){animation-delay: " + String(_startDelay + (_number - 1)* _delayNumberValue) + "s;}"
+    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelay + (_number)* _delayNumberValue).toFixed(2)) + "s;}";
 }
 
-console.log(newLetterNthChild(1));
+function pushLetterNthChildHtml(element) {
+}
+
+function pushLetterNthChildCss(element) {
+    pushResultCss(element);
+}
+
+
+function pushAllLetterNthChild(_number = textList.length) {
+    let nthChild;
+    for (let i = 0; i < _number; i++){
+        nthChild = newLetterNthChild(i);
+        pushLetterNthChildHtml(nthChild);
+        pushLetterNthChildCss(nthChild);
+    }
+}
