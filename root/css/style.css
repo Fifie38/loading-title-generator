@@ -135,3 +135,10 @@ header * {
 .copy-button {
     cursor: pointer;
 }
+
+#generator-box-2 {
+    border: solid 1px black;
+    min-width: 75%;
+    height: 450px;
+    margin: 50px 0 150px 0;
+}
