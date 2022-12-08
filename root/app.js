@@ -14,10 +14,24 @@ const resultCss = document.getElementById("result-css");
 // Variables in start
 let letter = ".letter {font-size: 0; animation: 0.1s linear anim-letter; animation-fill-mode: forwards;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
-
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
-
-let startDelay = 1.5;
+let startDelay = 1.5; // Delay before first letter animation 
+const htmlHead = `
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Loading Title</title>
+    <link rel="stylesheet" href="style.css">
+</head>`;
+const bodyStart = `<body>
+<section id="section-1">
+    <h1 >`;
+const bodyEnd = `</h1>
+</section>
+</body>
+</html>`;
+const cursor = `<span id="cursor">|</span>`;
 
 
 // Variables
@@ -48,6 +62,7 @@ function generate() {
 
 
 
+
 }
 
 function pushAll(){
@@ -56,6 +71,19 @@ function pushAll(){
     resetResultCss();
 
     // ==== HTML ====//
+    // add head of the html file
+    pushResultHtml(htmlHead);
+    // add body start
+    pushResultHtml(bodyStart);
+    // add all .letter span
+    pushAllLetterSpan(textList.length, textList);
+    // Check if cursor are select
+    if (cursorActiveValue) {
+        // add #cursor span
+        pushResultHtml(cursor);
+    }
+    // add body end 
+    pushResultHtml(bodyEnd);
 
 
     // ==== CSS ====//
@@ -65,6 +93,7 @@ function pushAll(){
     pushResultCss(newKeyframesLetter(fontSizeValue, fontSizeTypeValue));
     // add all .letter:nth-child
     pushAllLetterNthChild(textList.length);
+    // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor style
         pushResultCss(newCursor(fontSizeValue, fontSizeTypeValue));
@@ -83,8 +112,12 @@ function resetResultCss(){
     resultCss.textContent = '';
 }
 
-function pushResultHtml(){
-    
+function pushResultHtml(text){
+    let newP = document.createElement("p");
+    let newContent = document.createTextNode(text);
+    newP.appendChild(newContent);
+
+    resultHtml.appendChild(newP);
 }
 
 function pushResultCss(text){
@@ -108,7 +141,8 @@ function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue =
     return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelay + (_number)* _delayNumberValue).toFixed(2)) + "s;}";
 }
 
-function pushLetterNthChildHtml(element) {
+function pushLetterSpanHtml(element) {
+    pushResultHtml(element);
 }
 
 function pushLetterNthChildCss(element) {
@@ -120,7 +154,19 @@ function pushAllLetterNthChild(_number = textList.length) {
     let nthChild;
     for (let i = 0; i < _number; i++){
         nthChild = newLetterNthChild(i);
-        pushLetterNthChildHtml(nthChild);
         pushLetterNthChildCss(nthChild);
+    }
+}
+
+
+function newLetterSpan(letter){
+    return `<span class="letter">` + String(letter) + `</span>`; 
+}
+
+function pushAllLetterSpan(_number = textList.length, list = textList) {
+    let letterSpan;
+    for (let i = 0; i < _number; i++){
+        letterSpan = newLetterSpan(textList[i]);
+        pushLetterSpanHtml(letterSpan);
     }
 }
