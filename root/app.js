@@ -33,8 +33,8 @@ const bodyStart = '<body><section id="section-1"><h1 >';
 const bodyEnd = `</h1></section></body></html>`;
 const cursor = `<span id="cursor">|</span>`;
 
-const displaySectionHead = '<section id="section-1"> <h1 >'
-const displaySectionEnd = '</h1> </section>'
+const displaySectionHead = '<section id="section-1">'
+const displaySectionEnd = '</section>'
 
 
 // Variables from form
