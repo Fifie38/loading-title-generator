@@ -8,7 +8,6 @@ const cursorActive = document.getElementById("cursor-active");
 const generateButton = document.getElementById("generate-button");
 const tagSpan = document.getElementById("tag-span");
 const startDelay = document.getElementById("start-delay");
-const startDelaytype = document.getElementById("start-delay-type");
 const cursorDelay = document.getElementById("cursor-delay");
 const cursorDelayType = document.getElementById("cursor-delay-type");
 
@@ -47,7 +46,6 @@ let cursorActiveValue; // cursor value (bool)
 let delayNumberTypeValue; // number delay type (s, ms)
 let tagSpanValue; // tag value (h1, h2, h3, p)
 let startDelayValue; // Delay before first letter animation 
-let startDelaytypeValue; // start delay type (s, ms)
 let cursorDelayValue; // cursor animation delay value
 let cursorDelayTypeValue; // cursor animation delay type (s, ms)
 
@@ -78,7 +76,6 @@ function generate() {
     delayNumberTypeValue = delayNumberType.value;
     tagSpanValue = tagSpan.value;
     startDelayValue = startDelay.value;
-    startDelaytypeValue = startDelaytype.value;
     cursorDelayValue = cursorDelay.value;
     cursorDelayTypeValue = cursorDelayType.value;
 
