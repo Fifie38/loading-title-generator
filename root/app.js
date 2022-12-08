@@ -60,7 +60,6 @@ htmlButton.addEventListener("click", () => {
 cssButton.addEventListener("click", () => {
     navigator.clipboard.writeText(resultCss.innerHTML);
     resultCss.innerHTML = "Copy !";
-
 });
 
 
@@ -125,11 +124,11 @@ function pushAll(){
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
-        pushDisplayResult(cursor);
+        pushDisplayResult("<h1>" + cursor + "</h1>");
     }
 
-    pushDisplayResult( "<style>"+ letter + newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + newCursor(fontSizeValue, fontSizeTypeValue) +
-    keyframesCursor +"</style>");
+    pushDisplayResult( "<style>"+ letter + "\n"+ newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + "\n" + displayAllLetterNthChild() 
+    + "\n" + newCursor(fontSizeValue, fontSizeTypeValue) + "\n" + keyframesCursor +"</style>");
 
     
 }
@@ -197,14 +196,6 @@ function pushAllLetterNthChild(_number = textList.length) {
     }
 }
 
-function displayAllLetterNthChild(_number = textList.length) {
-    let nthChild;
-    for (let i = 0; i < _number; i++){
-        nthChild = newLetterNthChild(i);
-        pushLetterNthChildCss(nthChild);
-    }
-}
-
 
 
 function newLetterSpan(letter){
@@ -233,4 +224,12 @@ function displayAllLetterSpan(_number = textList.length, list = textList) {
         }
         pushDisplayResult(letterSpan);
     }
+}
+
+function displayAllLetterNthChild(_number = textList.length) {
+    let nthChild;
+    for (let i = 0; i < _number; i++){
+        nthChild += newLetterNthChild(i) + " \n";
+    }
+    return nthChild
 }
