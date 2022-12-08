@@ -142,7 +142,7 @@ header * {
 #section-box-2 {
     padding: 25px;
     border: solid 1px black;
-    width: 75%;
+    width: calc(75% - 50px);
     min-height: 250px;
     margin: 50px 0 50px 0;
     display: flex;

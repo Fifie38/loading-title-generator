@@ -55,11 +55,11 @@ let cursorActiveValue; // cursor value (bool)
 // Buttons event
 htmlButton.addEventListener("click", () => {
     navigator.clipboard.writeText(resultHtml.innerText);
-    resultHtml.innerHTML = "Copy !";
+    resultHtml.innerHTML = "Copied !";
 });
 cssButton.addEventListener("click", () => {
     navigator.clipboard.writeText(resultCss.innerText);
-    resultCss.innerHTML = "Copy !";
+    resultCss.innerHTML = "Copied !";
 });
 
 
