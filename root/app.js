@@ -15,34 +15,24 @@ const resultCss = document.getElementById("result-css");
 const htmlButton = document.getElementById("copy-button-html");
 const cssButton = document.getElementById("copy-button-css");
 
-// Get result elements : 
+// Get display elements : 
 const generatorBox2 = document.getElementById("generator-box-2");
 
 // Variables in start
 let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
-let startDelay = 1.5; // Delay before first letter animation 
-const htmlHead = `
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <title>Loading Title</title>
-    <link rel="stylesheet" href="style.css">
-</head>`;
+const htmlHead = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Loading Title</title><link rel="stylesheet" href="style.css"></head>`;
 const bodyStart = '<body><section id="section-1"><h1 >';
-const bodyEnd = `</h1>
-</section>
-</body>
-</html>`;
+const bodyEnd = `</h1></section></body></html>`;
 const cursor = `<span id="cursor">|</span>`;
 
 const displaySectionHead = '<section id="section-1"> <h1 >'
 const displaySectionEnd = '</h1> </section>'
 
 
-// Variables
+// Variables from form
+let startDelay = 1.5; // Delay before first letter animation 
 let textList = []; // a list of all characteres
 let fontSizeValue; // size value (int)
 let fontSizeTypeValue; // size type (em,rem, px, cm)
@@ -50,7 +40,7 @@ let delayNumberValue; // delay value (float / int)
 let cursorActiveValue; // cursor value (bool)
 
 
-// Buttons event
+// ======== Buttons event ========= //
 htmlButton.addEventListener("click", () => {
     navigator.clipboard.writeText(resultHtml.innerText);
     resultHtml.innerHTML = "Copied !";
@@ -61,10 +51,14 @@ cssButton.addEventListener("click", () => {
 });
 
 
+
+// ========= Form submit event ========= //
 generateButton.addEventListener("click", generate);
 
-// Set form result in variables
+
+// ========= Main function ========= //
 function generate() {
+    /** Set form result in variables */ 
     textList = textToGenerate.value.split('');
     fontSizeValue = fontSize.value;
     fontSizeTypeValue = fontSizeType.value;
@@ -74,12 +68,14 @@ function generate() {
     } else {
         cursorActiveValue = false;
     }
-
-    // push all elements in html and css results
-    pushAll();
+    pushAll(); // push all elements in html and css results
 }
 
+
+
+// ========= Push all elements in html and css results ========= //
 function pushAll(){
+    /** Push all elements in html and css results */
     // reset results
     resetResultHtml();
     resetResultCss();
@@ -99,7 +95,6 @@ function pushAll(){
     }
     // add body end 
     pushResultHtml(bodyEnd);
-
 
     // ==== CSS ====//
     // add .letter style
@@ -130,66 +125,86 @@ function pushAll(){
     
     // start animations
     letter.style.animationPlayState = 'running';
-
-    
 }
 
 
+
+
+// ========= Reset elements ========= //
 function resetResultHtml(){
+    /** Reset the hmtl result */
     resultHtml.textContent = '';
 }
 
 function resetResultCss(){
+    /** Reset the css result */
     resultCss.textContent = '';
 }
 
 function resetDisplayResult(){
+    /** Reset the display result */
     generatorBox2.textContent = '';
 }
 
-function pushResultHtml(text){
-    let newP = document.createElement("p");
-    let newContent = document.createTextNode(text);
-    newP.appendChild(newContent);
 
-    resultHtml.appendChild(newP);
-}
 
-function pushResultCss(text){
-    let newP = document.createElement("p");
-    let newContent = document.createTextNode(text);
-    newP.appendChild(newContent);
-
-    resultCss.appendChild(newP);
-}
-
-function pushDisplayResult(text) {
-    generatorBox2.innerHTML += text;
-}
-
+// ========= Create new elements ========= //
 function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue) {
+    /** Create new Keyframes for .letter*/
     return "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: "+ _fontSizeValue + _fontSizeTypeValue +";}}"; 
 }
 
 function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue){
+    /** Create new #cursor style (cursor at the end) */
     return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 0.8s infinite anim-cursor;}"
 }
 
-
 function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue = delayNumberValue){
+    /** Create a new style for a nth-child element of .letter (add animation-delay) */
     return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelay + (_number)* _delayNumberValue).toFixed(2)) + "s;}";
 }
 
-function pushLetterSpanHtml(element) {
-    pushResultHtml(element);
+function newLetterSpan(letter){
+    /** Create new span .letter */
+    return `<span class="letter">` + String(letter) + `</span>`; 
 }
 
+
+
+
+// ========= Push elements in DOM ========= //
+function pushResultHtml(text){
+    /** Create a new p with the @param:text and push it to html result */
+    let newP = document.createElement("p");
+    let newContent = document.createTextNode(text);
+    newP.appendChild(newContent);
+    resultHtml.appendChild(newP);
+}
+
+function pushResultCss(text){
+    /** Create a new p with the @param:text and push it to css result */
+    let newP = document.createElement("p");
+    let newContent = document.createTextNode(text);
+    newP.appendChild(newContent);
+    resultCss.appendChild(newP);
+}
+
+function pushDisplayResult(text) {
+    /** Push the @param:text to the display box */
+    generatorBox2.innerHTML += text;
+}
+
+function pushLetterSpanHtml(element) {
+    /** Push the span in the html result */
+    pushResultHtml(element);
+}
 function pushLetterNthChildCss(element) {
+    /** Push the .letter style in the css result */
     pushResultCss(element);
 }
 
-
 function pushAllLetterNthChild(_number = textList.length) {
+    /** Push all style of .letter (nth-child) in the css result */
     let nthChild;
     for (let i = 0; i < _number; i++){
         nthChild = newLetterNthChild(i);
@@ -197,13 +212,8 @@ function pushAllLetterNthChild(_number = textList.length) {
     }
 }
 
-
-
-function newLetterSpan(letter){
-    return `<span class="letter">` + String(letter) + `</span>`; 
-}
-
 function pushAllLetterSpan(_number = textList.length, list = textList) {
+    /** Push all span of .letter in the css result */
     let letterSpan;
     for (let i = 0; i < _number; i++){
         if (textList[i] === " ") {
@@ -216,6 +226,7 @@ function pushAllLetterSpan(_number = textList.length, list = textList) {
 }
 
 function displayAllLetterSpan(_number = textList.length, list = textList) {
+    /** Push all .letter span in the display box */
     let letterSpan;
     for (let i = 0; i < _number; i++){
         if (textList[i] === " ") {
@@ -228,6 +239,7 @@ function displayAllLetterSpan(_number = textList.length, list = textList) {
 }
 
 function displayAllLetterNthChild(_number = textList.length) {
+    /** Return all .letter style (nth-child) -> used for display box */
     let nthChild;
     for (let i = 0; i < _number; i++){
         nthChild += newLetterNthChild(i) + " \n";
