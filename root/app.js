@@ -168,7 +168,7 @@ function resetDisplayResult(){
 
 
 // ========= Create new elements ========= //
-function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue) {
+function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue,) {
     /** Create new Keyframes for .letter*/
     return "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: "+ _fontSizeValue + _fontSizeTypeValue +";}}"; 
 }
@@ -178,9 +178,9 @@ function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSize
     return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 1s infinite anim-cursor;}"
 }
 
-function newLetterNthChild(_number, _startDelay= startDelayValue, _delayNumberValue = delayNumberValue, _delayNumberTypeValue = delayNumberTypeValue){
+function newLetterNthChild(_number, _startDelayValue= startDelayValue, _delayNumberValue = delayNumberValue, _delayNumberTypeValue = delayNumberTypeValue){
     /** Create a new style for a nth-child element of .letter (add animation-delay) */
-    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelay + (_number)* _delayNumberValue).toFixed(2)) + _delayNumberTypeValue +";}";
+    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelayValue + (_number)* _delayNumberValue).toFixed(2)) + _delayNumberTypeValue +";}";
 }
 
 function newLetterSpan(letter){
