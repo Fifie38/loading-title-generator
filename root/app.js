@@ -31,9 +31,7 @@ const htmlHead = `
     <title>Loading Title</title>
     <link rel="stylesheet" href="style.css">
 </head>`;
-const bodyStart = `<body>
-<section id="section-1">
-    <h1 >`;
+const bodyStart = '<body><section id="section-1"><h1 >';
 const bodyEnd = `</h1>
 </section>
 </body>
