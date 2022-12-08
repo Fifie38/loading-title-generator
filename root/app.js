@@ -180,7 +180,8 @@ function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSize
 
 function newLetterNthChild(_number, _startDelayValue= startDelayValue, _delayNumberValue = delayNumberValue, _delayNumberTypeValue = delayNumberTypeValue){
     /** Create a new style for a nth-child element of .letter (add animation-delay) */
-    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelayValue + (_number)* _delayNumberValue).toFixed(2)) + _delayNumberTypeValue +";}";
+    let delay = Number(_startDelayValue) + (_number * _delayNumberValue);
+    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String(delay.toFixed(2)) + _delayNumberTypeValue + ";}";
 }
 
 function newLetterSpan(letter){
