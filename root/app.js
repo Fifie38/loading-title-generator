@@ -170,9 +170,9 @@ function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue =
     return "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: "+ _fontSizeValue + _fontSizeTypeValue +";}}"; 
 }
 
-function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue){
+function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue, _cursorDelayValue = cursorDelayValue, _cursorDelayTypeValue = cursorDelayTypeValue){
     /** Create new #cursor style (cursor at the end) */
-    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 1s infinite anim-cursor;}"
+    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: " +_cursorDelayValue + _cursorDelayTypeValue +" infinite anim-cursor;}"
 }
 
 function newLetterNthChild(_number, _startDelayValue= startDelayValue, _delayNumberValue = delayNumberValue, _delayNumberTypeValue = delayNumberTypeValue){
