@@ -18,7 +18,6 @@ You can test it [here](https://musical-pie-38d404.netlify.app/).
 - [ ]  Choose the tags where the spans will be put (h1, h2, p)
 - [ ]  Choose your time start animation delay
 - [ ]  Choose delay time unite
-- [ ]  Copy HTML
 - [ ]  Light/dark mode toggle
 
 
