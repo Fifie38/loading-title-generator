@@ -11,6 +11,10 @@ const generatorRight = document.getElementById("generator-right");
 const resultHtml = document.getElementById("result-html");
 const resultCss = document.getElementById("result-css");
 
+// Get copy buttons
+const htmlButton = document.getElementById("copy-button-html");
+const cssButton = document.getElementById("copy-button-css");
+
 // Variables in start
 let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
@@ -41,6 +45,17 @@ let fontSizeTypeValue; // size type (em,rem, px, cm)
 let delayNumberValue; // delay value (float / int)
 let cursorActiveValue; // cursor value (bool)
 
+
+// Buttons event
+htmlButton.addEventListener("click", () => {
+    navigator.clipboard.writeText(resultHtml.innerHTML);
+    resultHtml.innerHTML = "Copy !";
+});
+cssButton.addEventListener("click", () => {
+    navigator.clipboard.writeText(resultCss.innerHTML);
+    resultCss.innerHTML = "Copy !";
+
+});
 
 
 generateButton.addEventListener("click", generate);

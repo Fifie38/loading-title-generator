@@ -123,4 +123,11 @@ header * {
     padding: 10px;
 }
 
+.header-result {
+    display: flex;
+    justify-content: space-between;
+}
 
+.copy-button {
+    cursor: pointer;
+}
