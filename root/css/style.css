@@ -94,39 +94,40 @@ header * {
 /* ============================================================================= */
 
 
-#generator-box {
+#generator-box, #button-box {
     border: solid 1px black;
     min-width: 75%;
     display: flex;
-    margin-bottom: 150px;
 }
 
-#generator-left {
-    display: flex;
-}
 
-#generator-left h2 {
-    margin-top: 0;
-}
-
-#generator-left, #generator-right {
+#html-result-box, #css-result-box {
     width: calc(50% - 50px);
-    border-right: solid 1px black;
 }
 
 #form-left, #form-right {
     border-right: solid 1px black;
     width: calc(50% - 50px);
-    padding: 25px;
+    padding: 20px 35px;
 }
 
-
-#generator-right {
-    border-right: none;
-    padding: 25px;
+#form-right {
+    border: none;
 }
 
-#generator-right h3 {
+form {
+    font-size: 1.1em;
+}
+
+#generator-result {
+    border: none;
+    padding: 25px;
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#generator-result h3 {
     margin: 0;
 }
 
@@ -135,6 +136,30 @@ header * {
     color: aliceblue;
     padding: 10px;
 }
+
+#button-box {
+    border-top: none;
+    height: 50px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(49, 46, 46);
+    pointer-events: none;
+}
+
+#generate-button {
+    height: 25px;
+    font-size: 1.15em;
+    padding: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    color: white;
+    pointer-events: auto;
+}
+
+#button-box:hover {
+    background-color: rgb(56, 56, 56);
+}
+
 
 #result-box {
     margin: 15px 0;

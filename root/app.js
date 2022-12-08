@@ -138,9 +138,6 @@ function pushAll(){
     // Push all style
     pushDisplayResult( "<style>"+ letter + "\n"+ newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + "\n" + displayAllLetterNthChild() 
     + "\n" + newCursor(fontSizeValue, fontSizeTypeValue) + "\n" + keyframesCursor +"</style>");
-    
-    // start animations
-    letter.style.animationPlayState = 'running';
 }
 
 
