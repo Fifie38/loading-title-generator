@@ -14,10 +14,9 @@ You can test it [here](https://musical-pie-38d404.netlify.app/).
 - [x]  Choose your font size unite (em, rem, px, cm)
 - [x]  Choose delay between each character
 - [x]  Active yes/no the cursor at the end
-- [ ]  Choose delay between each animation of the cursor
-- [ ]  Choose the tags where the spans will be put (h1, h2, p)
-- [ ]  Choose your time start animation delay
-- [ ]  Choose delay time unite
+- [x]  Choose delay between each animation of the cursor
+- [x]  Choose the tags where the spans will be put (h1, h2, p)
+- [x]  Choose your time start animation delay
 - [ ]  Light/dark mode toggle
 
 
