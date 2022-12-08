@@ -25,7 +25,7 @@ const cssButton = document.getElementById("copy-button-css");
 const generatorBox2 = document.getElementById("generator-box-2");
 
 // Variables in start
-let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards;}";
+let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards; display: inline;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
 const htmlHead = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Loading Title</title><link rel="stylesheet" href="style.css"></head>`;
