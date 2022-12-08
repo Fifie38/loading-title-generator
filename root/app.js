@@ -3,8 +3,14 @@ const textToGenerate = document.getElementById("text-to-generate");
 const fontSize = document.getElementById("font-size");
 const fontSizeType = document.getElementById("font-size-type");
 const delayNumber = document.getElementById("delay-number");
+const delayNumberType = document.getElementById("delay-number-type");
 const cursorActive = document.getElementById("cursor-active");
 const generateButton = document.getElementById("generate-button");
+const tagSpan = document.getElementById("tag-span");
+const startDelay = document.getElementById("start-delay");
+const cursorDelay = document.getElementById("cursor-delay");
+const cursorDelayType = document.getElementById("cursor-delay-type");
+
 
 // Get result elements :
 const generatorRight = document.getElementById("generator-right");
@@ -19,7 +25,7 @@ const cssButton = document.getElementById("copy-button-css");
 const generatorBox2 = document.getElementById("generator-box-2");
 
 // Variables in start
-let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards;}";
+let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards; display: inline;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
 const htmlHead = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Loading Title</title><link rel="stylesheet" href="style.css"></head>`;
@@ -32,12 +38,16 @@ const displaySectionEnd = '</h1> </section>'
 
 
 // Variables from form
-let startDelay = 1.5; // Delay before first letter animation 
 let textList = []; // a list of all characteres
 let fontSizeValue; // size value (int)
 let fontSizeTypeValue; // size type (em,rem, px, cm)
 let delayNumberValue; // delay value (float / int)
 let cursorActiveValue; // cursor value (bool)
+let delayNumberTypeValue; // number delay type (s, ms)
+let tagSpanValue; // tag value (h1, h2, h3, p)
+let startDelayValue; // Delay before first letter animation 
+let cursorDelayValue; // cursor animation delay value
+let cursorDelayTypeValue; // cursor animation delay type (s, ms)
 
 
 // ======== Buttons event ========= //
@@ -63,6 +73,12 @@ function generate() {
     fontSizeValue = fontSize.value;
     fontSizeTypeValue = fontSizeType.value;
     delayNumberValue = delayNumber.value;
+    delayNumberTypeValue = delayNumberType.value;
+    tagSpanValue = tagSpan.value;
+    startDelayValue = startDelay.value;
+    cursorDelayValue = cursorDelay.value;
+    cursorDelayTypeValue = cursorDelayType.value;
+
     if (cursorActive.value == "yes") {
         cursorActiveValue = true;
     } else {
@@ -91,7 +107,7 @@ function pushAll(){
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
-        pushResultHtml(cursor);
+        pushResultHtml("<"+ tagSpanValue + " class='letter' > " + cursor + " </"+ tagSpanValue + ">");
     }
     // add body end 
     pushResultHtml(bodyEnd);
@@ -117,14 +133,11 @@ function pushAll(){
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
-        pushDisplayResult("<h1 id='cursor'>" + cursor + "</h1>");
+        pushDisplayResult("<"+ tagSpanValue + " class='letter' > " + cursor + " </"+ tagSpanValue + ">");
     }
     // Push all style
     pushDisplayResult( "<style>"+ letter + "\n"+ newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + "\n" + displayAllLetterNthChild() 
     + "\n" + newCursor(fontSizeValue, fontSizeTypeValue) + "\n" + keyframesCursor +"</style>");
-    
-    // start animations
-    letter.style.animationPlayState = 'running';
 }
 
 
@@ -149,19 +162,20 @@ function resetDisplayResult(){
 
 
 // ========= Create new elements ========= //
-function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue) {
+function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue,) {
     /** Create new Keyframes for .letter*/
     return "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: "+ _fontSizeValue + _fontSizeTypeValue +";}}"; 
 }
 
-function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue){
+function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue, _cursorDelayValue = cursorDelayValue, _cursorDelayTypeValue = cursorDelayTypeValue){
     /** Create new #cursor style (cursor at the end) */
-    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 0.8s infinite anim-cursor;}"
+    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: " +_cursorDelayValue + _cursorDelayTypeValue +" infinite anim-cursor;}"
 }
 
-function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue = delayNumberValue){
+function newLetterNthChild(_number, _startDelayValue= startDelayValue, _delayNumberValue = delayNumberValue, _delayNumberTypeValue = delayNumberTypeValue){
     /** Create a new style for a nth-child element of .letter (add animation-delay) */
-    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelay + (_number)* _delayNumberValue).toFixed(2)) + "s;}";
+    let delay = Number(_startDelayValue) + (_number * _delayNumberValue);
+    return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String(delay.toFixed(2)) + _delayNumberTypeValue + ";}";
 }
 
 function newLetterSpan(letter){
@@ -216,10 +230,10 @@ function pushAllLetterSpan(_number = textList.length, list = textList) {
     /** Push all span of .letter in the css result */
     let letterSpan;
     for (let i = 0; i < _number; i++){
-        if (textList[i] === " ") {
-            letterSpan = newLetterSpan("&nbsp;");
+        if (list[i] === " ") {
+            letterSpan =  "<"+ tagSpanValue + " class='letter' > " + newLetterSpan("&nbsp;") + " </"+ tagSpanValue + ">";
         } else {
-            letterSpan = newLetterSpan(textList[i]);
+            letterSpan = "<"+ tagSpanValue + " class='letter' > " + newLetterSpan(list[i])+ " </"+ tagSpanValue + ">";
         }
         pushLetterSpanHtml(letterSpan);
     }
@@ -229,10 +243,10 @@ function displayAllLetterSpan(_number = textList.length, list = textList) {
     /** Push all .letter span in the display box */
     let letterSpan;
     for (let i = 0; i < _number; i++){
-        if (textList[i] === " ") {
-            letterSpan = "<h1 class='letter'>" + newLetterSpan("&nbsp;") + "</h1>";
+        if (list[i] === " ") {
+            letterSpan = "<"+ tagSpanValue + " class='letter' > " + newLetterSpan("&nbsp;") + "</"+ tagSpanValue + ">";
         } else {
-            letterSpan = "<h1 class='letter'>" + newLetterSpan(textList[i]) + "</h1>";
+            letterSpan = "<"+ tagSpanValue + " class='letter' > " + newLetterSpan(list[i]) + "</"+ tagSpanValue + ">";
         }
         pushDisplayResult(letterSpan);
     }
