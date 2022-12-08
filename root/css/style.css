@@ -123,6 +123,10 @@ header * {
     padding: 10px;
 }
 
+#result-box {
+    margin: 15px 0;
+}
+
 .header-result {
     display: flex;
     justify-content: space-between;
