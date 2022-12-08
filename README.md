@@ -22,14 +22,13 @@ You can test it [here](https://musical-pie-38d404.netlify.app/).
 - [ ]  Light/dark mode toggle
 
 
-## License
-
-[MIT](https://choosealicense.com/licenses/mit/)
-
-
 ## Screenshots
 Desktop screenshots:
 
 ![Desktop Screenshot](https://github.com/Fifie38/loading-title-generator/blob/main/demo1.PNG)
 ![Desktop Screenshot](https://github.com/Fifie38/loading-title-generator/blob/main/demo2.PNG)
 
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)
