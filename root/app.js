@@ -107,7 +107,7 @@ function pushAll(){
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
-        pushResultHtml(cursor);
+        pushResultHtml("<"+ tagSpanValue + " class='letter' > " + cursor + " </"+ tagSpanValue + ">");
     }
     // add body end 
     pushResultHtml(bodyEnd);
@@ -133,7 +133,7 @@ function pushAll(){
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
-        pushDisplayResult("<h1 id='cursor'>" + cursor + "</h1>");
+        pushDisplayResult("<"+ tagSpanValue + " class='letter' > " + cursor + " </"+ tagSpanValue + ">");
     }
     // Push all style
     pushDisplayResult( "<style>"+ letter + "\n"+ newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + "\n" + displayAllLetterNthChild() 
