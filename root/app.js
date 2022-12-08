@@ -29,8 +29,8 @@ let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animat
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
 const htmlHead = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"><title>Loading Title</title><link rel="stylesheet" href="style.css"></head>`;
-const bodyStart = '<body><section id="section-1"><h1 >';
-const bodyEnd = `</h1></section></body></html>`;
+const bodyStart = '<body><section id="section-1">';
+const bodyEnd = `</section></body></html>`;
 const cursor = `<span id="cursor">|</span>`;
 
 const displaySectionHead = '<section id="section-1">'
