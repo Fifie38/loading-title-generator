@@ -1,7 +1,7 @@
 # loading-title-generator
  
 ## Demo : 
-You can test it [here](https://musical-pie-38d404.netlify.app/).
+You can test it [here](https://amazing-gumption-594919.netlify.app/).
 (Last update: 08/12/2022)
 
 ## Features
