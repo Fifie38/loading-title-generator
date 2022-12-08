@@ -12,7 +12,7 @@ const resultHtml = document.getElementById("result-html");
 const resultCss = document.getElementById("result-css");
 
 // Variables in start
-let letter = ".letter {font-size: 0; animation: 0.1s linear anim-letter; animation-fill-mode: forwards;}";
+let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
 const keyframesCursor = "@keyframes anim-cursor { 0%{opacity: 1;} 50%{opacity: 0;} 100%{opacity: 1;}";
 let startDelay = 1.5; // Delay before first letter animation 
