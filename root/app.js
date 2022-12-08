@@ -15,6 +15,9 @@ const resultCss = document.getElementById("result-css");
 const htmlButton = document.getElementById("copy-button-html");
 const cssButton = document.getElementById("copy-button-css");
 
+// Get result elements : 
+const generatorBox2 = document.getElementById("generator-box-2");
+
 // Variables in start
 let letter = ".letter {font-size: 0; animation: 0.05s linear anim-letter; animation-fill-mode: forwards;}";
 let keyframesLetter = "@keyframes anim-letter { 0%{font-size: 0;} 100%{font-size: 2em;}}";
@@ -74,10 +77,6 @@ function generate() {
 
     // push all elements in html and css results
     pushAll();
-
-
-
-
 }
 
 function pushAll(){
