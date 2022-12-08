@@ -152,3 +152,7 @@ header * {
 #header-display {
     margin-bottom: 25px;
 }
+
+#generator-box-2 h1{
+    display: inline;
+}

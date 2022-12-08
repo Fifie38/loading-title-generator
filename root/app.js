@@ -40,6 +40,9 @@ const bodyEnd = `</h1>
 </html>`;
 const cursor = `<span id="cursor">|</span>`;
 
+const displaySectionHead = '<section id="section-1"> <h1 >'
+const displaySectionEnd = '</h1> </section>'
+
 
 // Variables
 let textList = []; // a list of all characteres
@@ -117,13 +120,17 @@ function pushAll(){
     }
 
     // ==== Display Result ==== //
-    // add all .letter span
+    // Display all .letter span
     displayAllLetterSpan(textList.length, textList);
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
         pushDisplayResult(cursor);
     }
+
+    pushDisplayResult( "<style>"+ letter + newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + newCursor(fontSizeValue, fontSizeTypeValue) +
+    keyframesCursor +"</style>");
+
     
 }
 
@@ -190,6 +197,15 @@ function pushAllLetterNthChild(_number = textList.length) {
     }
 }
 
+function displayAllLetterNthChild(_number = textList.length) {
+    let nthChild;
+    for (let i = 0; i < _number; i++){
+        nthChild = newLetterNthChild(i);
+        pushLetterNthChildCss(nthChild);
+    }
+}
+
+
 
 function newLetterSpan(letter){
     return `<span class="letter">` + String(letter) + `</span>`; 
@@ -211,9 +227,9 @@ function displayAllLetterSpan(_number = textList.length, list = textList) {
     let letterSpan;
     for (let i = 0; i < _number; i++){
         if (textList[i] === " ") {
-            letterSpan = newLetterSpan("&nbsp;");
+            letterSpan = "<h1>" + newLetterSpan("&nbsp;") + "</h1>";
         } else {
-            letterSpan = newLetterSpan(textList[i]);
+            letterSpan = "<h1>" + newLetterSpan(textList[i]) + "</h1>";
         }
         pushDisplayResult(letterSpan);
     }
