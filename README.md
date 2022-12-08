@@ -1,7 +1,8 @@
 # loading-title-generator
  
 ## Demo : 
-You can test it [here](https://stalwart-palmier-cb06f7.netlify.app/)
+You can test it [here](https://musical-pie-38d404.netlify.app/).
+(Last update: 08/12/2022)
 
 ## Features
 
