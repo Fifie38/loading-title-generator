@@ -83,6 +83,7 @@ function pushAll(){
     // reset results
     resetResultHtml();
     resetResultCss();
+    resetDisplayResult();
 
     // ==== HTML ====//
     // add head of the html file
@@ -114,6 +115,15 @@ function pushAll(){
         // add keyframes anim-cursor
         pushResultCss(keyframesCursor);
     }
+
+    // ==== Display Result ==== //
+    // add all .letter span
+    displayAllLetterSpan(textList.length, textList);
+    // Check if cursor are select
+    if (cursorActiveValue) {
+        // add #cursor span
+        pushDisplayResult(cursor);
+    }
     
 }
 
@@ -124,6 +134,10 @@ function resetResultHtml(){
 
 function resetResultCss(){
     resultCss.textContent = '';
+}
+
+function resetDisplayResult(){
+    generatorBox2.textContent = '';
 }
 
 function pushResultHtml(text){
@@ -140,6 +154,10 @@ function pushResultCss(text){
     newP.appendChild(newContent);
 
     resultCss.appendChild(newP);
+}
+
+function pushDisplayResult(text) {
+    generatorBox2.innerHTML += text;
 }
 
 function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue) {
@@ -186,5 +204,17 @@ function pushAllLetterSpan(_number = textList.length, list = textList) {
             letterSpan = newLetterSpan(textList[i]);
         }
         pushLetterSpanHtml(letterSpan);
+    }
+}
+
+function displayAllLetterSpan(_number = textList.length, list = textList) {
+    let letterSpan;
+    for (let i = 0; i < _number; i++){
+        if (textList[i] === " ") {
+            letterSpan = newLetterSpan("&nbsp;");
+        } else {
+            letterSpan = newLetterSpan(textList[i]);
+        }
+        pushDisplayResult(letterSpan);
     }
 }
