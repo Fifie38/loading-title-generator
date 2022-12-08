@@ -3,8 +3,15 @@ const textToGenerate = document.getElementById("text-to-generate");
 const fontSize = document.getElementById("font-size");
 const fontSizeType = document.getElementById("font-size-type");
 const delayNumber = document.getElementById("delay-number");
+const delayNumberType = document.getElementById("delay-number-type");
 const cursorActive = document.getElementById("cursor-active");
 const generateButton = document.getElementById("generate-button");
+const tagSpan = document.getElementById("tag-span");
+const startDelay = document.getElementById("start-delay");
+const startDelaytype = document.getElementById("start-delay-type");
+const cursorDelay = document.getElementById("cursor-delay");
+const cursorDelayType = document.getElementById("cursor-delay-type");
+
 
 // Get result elements :
 const generatorRight = document.getElementById("generator-right");
@@ -32,12 +39,17 @@ const displaySectionEnd = '</h1> </section>'
 
 
 // Variables from form
-let startDelay = 0.5; // Delay before first letter animation 
 let textList = []; // a list of all characteres
 let fontSizeValue; // size value (int)
 let fontSizeTypeValue; // size type (em,rem, px, cm)
 let delayNumberValue; // delay value (float / int)
 let cursorActiveValue; // cursor value (bool)
+let delayNumberTypeValue; // number delay type (s, ms)
+let tagSpanValue; // tag value (h1, h2, h3, p)
+let startDelayValue; // Delay before first letter animation 
+let startDelaytypeValue; // start delay type (s, ms)
+let cursorDelayValue; // cursor animation delay value
+let cursorDelayTypeValue; // cursor animation delay type (s, ms)
 
 
 // ======== Buttons event ========= //
@@ -63,6 +75,13 @@ function generate() {
     fontSizeValue = fontSize.value;
     fontSizeTypeValue = fontSizeType.value;
     delayNumberValue = delayNumber.value;
+    delayNumberTypeValue = delayNumberType.value;
+    tagSpanValue = tagSpan.value;
+    startDelayValue = startDelay.value;
+    startDelaytypeValue = startDelaytype.value;
+    cursorDelayValue = cursorDelay.value;
+    cursorDelayTypeValue = cursorDelayType.value;
+
     if (cursorActive.value == "yes") {
         cursorActiveValue = true;
     } else {
@@ -159,7 +178,7 @@ function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSize
     return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 1s infinite anim-cursor;}"
 }
 
-function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue = delayNumberValue){
+function newLetterNthChild(_number, _startDelay= startDelayValue, _delayNumberValue = delayNumberValue){
     /** Create a new style for a nth-child element of .letter (add animation-delay) */
     return ".letter:nth-child(" + String(_number + 1) + "){animation-delay: " + String((_startDelay + (_number)* _delayNumberValue).toFixed(2)) + "s;}";
 }
