@@ -124,11 +124,13 @@ function pushAll(){
     // Check if cursor are select
     if (cursorActiveValue) {
         // add #cursor span
-        pushDisplayResult("<h1>" + cursor + "</h1>");
+        pushDisplayResult("<h1 id='cursor'>" + cursor + "</h1>");
     }
-
+    // Push all style
     pushDisplayResult( "<style>"+ letter + "\n"+ newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + "\n" + displayAllLetterNthChild() 
     + "\n" + newCursor(fontSizeValue, fontSizeTypeValue) + "\n" + keyframesCursor +"</style>");
+
+    letter.style.animationPlayState = 'running';
 
     
 }
@@ -218,9 +220,9 @@ function displayAllLetterSpan(_number = textList.length, list = textList) {
     let letterSpan;
     for (let i = 0; i < _number; i++){
         if (textList[i] === " ") {
-            letterSpan = "<h1>" + newLetterSpan("&nbsp;") + "</h1>";
+            letterSpan = "<h1 class='letter'>" + newLetterSpan("&nbsp;") + "</h1>";
         } else {
-            letterSpan = "<h1>" + newLetterSpan(textList[i]) + "</h1>";
+            letterSpan = "<h1 class='letter'>" + newLetterSpan(textList[i]) + "</h1>";
         }
         pushDisplayResult(letterSpan);
     }
