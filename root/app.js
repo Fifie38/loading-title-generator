@@ -233,10 +233,10 @@ function pushAllLetterSpan(_number = textList.length, list = textList) {
     /** Push all span of .letter in the css result */
     let letterSpan;
     for (let i = 0; i < _number; i++){
-        if (textList[i] === " ") {
-            letterSpan = newLetterSpan("&nbsp;");
+        if (list[i] === " ") {
+            letterSpan =  "<"+ tagSpanValue + " class='letter' > " + newLetterSpan("&nbsp;") + " </"+ tagSpanValue + ">";
         } else {
-            letterSpan = newLetterSpan(textList[i]);
+            letterSpan = "<"+ tagSpanValue + " class='letter' > " + newLetterSpan(list[i])+ " </"+ tagSpanValue + ">";
         }
         pushLetterSpanHtml(letterSpan);
     }
@@ -246,10 +246,10 @@ function displayAllLetterSpan(_number = textList.length, list = textList) {
     /** Push all .letter span in the display box */
     let letterSpan;
     for (let i = 0; i < _number; i++){
-        if (textList[i] === " ") {
-            letterSpan = "<h1 class='letter'>" + newLetterSpan("&nbsp;") + "</h1>";
+        if (list[i] === " ") {
+            letterSpan = "<"+ tagSpanValue + " class='letter' > " + newLetterSpan("&nbsp;") + "</"+ tagSpanValue + ">";
         } else {
-            letterSpan = "<h1 class='letter'>" + newLetterSpan(textList[i]) + "</h1>";
+            letterSpan = "<"+ tagSpanValue + " class='letter' > " + newLetterSpan(list[i]) + "</"+ tagSpanValue + ">";
         }
         pushDisplayResult(letterSpan);
     }
