@@ -166,7 +166,11 @@ function newLetterSpan(letter){
 function pushAllLetterSpan(_number = textList.length, list = textList) {
     let letterSpan;
     for (let i = 0; i < _number; i++){
-        letterSpan = newLetterSpan(textList[i]);
+        if (textList[i] === " ") {
+            letterSpan = newLetterSpan("&nbsp;");
+        } else {
+            letterSpan = newLetterSpan(textList[i]);
+        }
         pushLetterSpanHtml(letterSpan);
     }
 }
