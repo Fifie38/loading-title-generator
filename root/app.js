@@ -54,11 +54,11 @@ let cursorActiveValue; // cursor value (bool)
 
 // Buttons event
 htmlButton.addEventListener("click", () => {
-    navigator.clipboard.writeText(resultHtml.innerHTML);
+    navigator.clipboard.writeText(resultHtml.innerText);
     resultHtml.innerHTML = "Copy !";
 });
 cssButton.addEventListener("click", () => {
-    navigator.clipboard.writeText(resultCss.innerHTML);
+    navigator.clipboard.writeText(resultCss.innerText);
     resultCss.innerHTML = "Copy !";
 });
 
@@ -129,7 +129,8 @@ function pushAll(){
     // Push all style
     pushDisplayResult( "<style>"+ letter + "\n"+ newKeyframesLetter(fontSizeValue, fontSizeTypeValue) + "\n" + displayAllLetterNthChild() 
     + "\n" + newCursor(fontSizeValue, fontSizeTypeValue) + "\n" + keyframesCursor +"</style>");
-
+    
+    // start animations
     letter.style.animationPlayState = 'running';
 
     
