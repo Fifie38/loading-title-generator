@@ -32,7 +32,7 @@ const displaySectionEnd = '</h1> </section>'
 
 
 // Variables from form
-let startDelay = 1.5; // Delay before first letter animation 
+let startDelay = 0.5; // Delay before first letter animation 
 let textList = []; // a list of all characteres
 let fontSizeValue; // size value (int)
 let fontSizeTypeValue; // size type (em,rem, px, cm)
@@ -156,7 +156,7 @@ function newKeyframesLetter(_fontSizeValue = fontSizeValue, _fontSizeTypeValue =
 
 function newCursor(_fontSizeValue = fontSizeValue, _fontSizeTypeValue = fontSizeTypeValue){
     /** Create new #cursor style (cursor at the end) */
-    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 0.8s infinite anim-cursor;}"
+    return "#cursor {font-size: "+ _fontSizeValue + _fontSizeTypeValue +"; animation: 1s infinite anim-cursor;}"
 }
 
 function newLetterNthChild(_number, _startDelay= startDelay, _delayNumberValue = delayNumberValue){

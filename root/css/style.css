@@ -101,18 +101,29 @@ header * {
     margin-bottom: 150px;
 }
 
+#generator-left {
+    display: flex;
+}
+
 #generator-left h2 {
     margin-top: 0;
 }
 
 #generator-left, #generator-right {
     width: calc(50% - 50px);
-    padding: 25px;
     border-right: solid 1px black;
 }
 
+#form-left, #form-right {
+    border-right: solid 1px black;
+    width: calc(50% - 50px);
+    padding: 25px;
+}
+
+
 #generator-right {
     border-right: none;
+    padding: 25px;
 }
 
 #generator-right h3 {
