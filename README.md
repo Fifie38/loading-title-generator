@@ -1,5 +1,7 @@
 # loading-title-generator
- 
+
+WORK ONLY BY USING GOOGLE CHROME
+
 ## Demo : 
 You can test it [here](https://jocular-rugelach-1b1a22.netlify.app/).
 (Last update: 08/12/2022)
